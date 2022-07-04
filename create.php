@@ -21,57 +21,67 @@ die();
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-    <link rel="stylesheet" href="assets/css/estilosAdmin.css">
-    <script src="https://kit.fontawesome.com/a539cc141c.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>BBank Admin</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/estilosAdmin1.css">
+    
 </head>
-<body id= "body">
-    <header>
-        <div class="icon__menu">
-            <i class="fas fa-bars" id="btn_open"></i>
-        </div>
-    </header>
-    <div class="menu__side" id="menu__side">
+<body>
 
-        <div class="name__page">
-            <i class="fa-solid fa-user-shield"></i>
-            <h4>Admin</h4>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2><span class="lab la-accusoft"> <span>Admin</span></span></h2>
         </div>
 
-        <div class="options__menu">
-
-            <a href="home.php">
-                <div class="option">
-                    <i class="fas fa-home" title="Home"></i>
-                    <h4>Home</h4>
-                </div>
-            </a>
-
-            <a href="" class="selected">
-                <div class="option">
-                    <i class="fa-solid fa-user-plus" title="Create"></i>
-                    <h4>Create</h4>
-                </div>
-            </a>
-            
-            <a href="users.php">
-                <div class="option">
-                    <i class="fa-solid fa-users" title="Users"></i>
-                    <h4>Users</h4>
-                </div>
-            </a>
-            
-            <a href="cerrar_session.php">
-            <div class="option">
-                <i class="fa-solid fa-arrow-right-from-bracket" title = "Exit"></i>
-                <h4>Exit</h4>
-            </div>
-            </a>
-
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="admin.php"><span class="las la-igloo"></span>
+                    <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="create.php" class="active"><span class="las la-user-plus"></span>
+                    <span>Create Clients</span></a>
+                </li>
+                <li>
+                    <a href="users.php"><span class="las la-users"></span>
+                    <span>Clients</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="las la-user-circle"></span>
+                    <span>Bank Accounts</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="las la-credit-card"></span>
+                    <span>Credit Cards</span></a>
+                </li>
+                <li>
+                    <a href="cerrar_session.php"><span class="las la-door-open"></span>
+                    <span>Logout</span></a>
+                </li>
+            </ul>
         </div>
-
     </div>
+
+    <div class="main-content">
+        <header>
+            <h2>
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+
+                Create Users
+            </h2>
+
+            <div class="user-wrapper">
+                <img src="assets/images/adminIcon.png" width="30px" height="30px" alt="">
+                <div>
+                    <h4>Admin</h4>
+                </div>
+            </div>
+        </header>
 
     <main>
         
