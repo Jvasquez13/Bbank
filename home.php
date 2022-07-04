@@ -19,7 +19,7 @@
     if($rol == 1){
         header('location: admin.php');
     }
-
+    
 ?>
 
 
@@ -28,63 +28,67 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-    <link rel="stylesheet" href="assets/css/estilosAdmin.css">
-    <script src="https://kit.fontawesome.com/a539cc141c.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>BBank Admin</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/estilosAdmin1.css">
+    
 </head>
-<body id= "body">
-    <header>
-        <div class="icon__menu">
-            <i class="fas fa-bars" id="btn_open"></i>
+<body>
+
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2><span class="lab la-accusoft"> <span><?php echo $_SESSION["nombre"]?></span></span></h2>
         </div>
 
-    </header>
-    <div class="menu__side" id="menu__side">
-
-        <div class="name__page">
-            <i class="fa-solid fa-user"></i>
-            <h4><?php echo $_SESSION["nombre"]?></h4>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="" class="active"><span class="las la-igloo"></span>
+                    <span>Home</span></a>
+                </li>
+                <li>
+                    <a href="" ><span class="las la-users"></span>
+                    <span>Create Clients</span></a>
+                </li>
+                <li>
+                    <a href="" ><span class="las la-user-plus"></span>
+                    <span>Clients</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="las la-user-circle"></span>
+                    <span>Bank Accounts</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="las la-credit-card"></span>
+                    <span>Credit Cards</span></a>
+                </li>
+                <li>
+                    <a href="cerrar_session.php"><span class="las la-door-open"></span>
+                    <span>Logout</span></a>
+                </li>
+            </ul>
         </div>
-
-        <div class="options__menu">
-
-            <a href="" class="selected">
-                <div class="option">
-                    <i class="fas fa-home" title="Home"></i>
-                    <h4>Home</h4>
-                </div>
-            </a>
-
-            <a href="cuentas.php">
-                <div class="option">
-                    <i class="fa-solid fa-wallet" title="Cuentas"></i>
-                    <h4>Accounts</h4>
-                </div>
-            </a>
-
-            <a href="company.php" >
-                <div class="option">
-                    <i class="fa-solid fa-money-bills" title="Prestamos"></i>
-                    <h4>Loans</h4>
-                </div>
-            </a>
-
-            <a href="company.php" >
-                <div class="option">
-                    <i class="fa-solid fa-credit-card" title="Tarjetas"></i>
-                    <h4>Cards</h4>
-                </div>
-            </a>
-            <a href="cerrar_session.php">
-            <div class="option">
-                <i class="fa-solid fa-arrow-right-from-bracket" title = "Exit"></i>
-                <h4>Exit</h4>
-            </div>
-            </a>
-        </div>
-
     </div>
+
+    <div class="main-content">
+        <header>
+            <h2>
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+
+                Home
+            </h2>
+
+            <div class="user-wrapper">
+                <img src="assets/images/adminIcon.png" width="30px" height="30px" alt="">
+                <div>
+                    <h4><?php echo $_SESSION["nombre"]?></h4>
+                </div>
+            </div>
+        </header>
 
     <main>
         <h1>Welcome back, <?php echo $_SESSION["nombre"]?>!!!</h1><br>
