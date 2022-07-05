@@ -74,6 +74,7 @@ die();
 
                 Dashboard
             </h2>
+            
             <div class="search-wrapper">
                 <span class="las la-search"></span>
                 <input type="search" placeholder="Search here"/>
@@ -82,7 +83,7 @@ die();
             <div class="user-wrapper">
                 <img src="assets/images/adminIcon.png" width="30px" height="30px" alt="">
                 <div>
-                    <h4>Admin</h4>
+                    <h4><?php echo $_SESSION['nombre'];?></h4>
                 </div>
             </div>
         </header>
@@ -91,7 +92,15 @@ die();
             <div class="cards">
                 <div class="cards-single">
                     <div>
-                        <h1>54</h1>
+                        <h1>
+                            <?php
+                            include('db.php');
+                            $sql = "SELECT * FROM usuarios WHERE rol = 0 AND status = 1;";
+                            $query = mysqli_query($conexion,$sql);
+                            $clientes = mysqli_num_rows($query);
+                            echo $clientes;
+                            ?>
+                        </h1>
                         <span>Clients</span>
                     </div>
                     <div>
@@ -101,17 +110,7 @@ die();
 
                 <div class="cards-single">
                     <div>
-                        <h1>79</h1>
-                        <span>Projects</span>
-                    </div>
-                    <div>
-                        <span class="las la-clipboard-list"></span>
-                    </div>
-                </div>
-
-                <div class="cards-single">
-                    <div>
-                        <h1>23</h1>
+                        <h1>54</h1>
                         <span>Accounts</span>
                     </div>
                     <div>
@@ -155,9 +154,9 @@ die();
                                 <table width="100%">
                                     <thead>
                                         <tr>
-                                            <td>Project Tittle</td>
-                                            <td>Departament</td>
-                                            <td>Status</td>
+                                            <th>Project Tittle</th>
+                                            <th>Departament</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -197,72 +196,32 @@ die();
                         <div class="card-header">
                             <h2>New Clients</h2>
 
-                            <button>See all <span class="las la-arrow-right">
-                            </span></button>
+                            <a href="users.php"><button>See all <span class="las la-arrow-right">
+                            </span></button></a>
                         </div>
-
                         <div class="card-body">
+                        <?php
+                        $sql = "SELECT nombre FROM usuarios WHERE rol = 0 ORDER BY id DESC LIMIT 4;";
+                        $query = mysqli_query($conexion,$sql);
+                        while($row=mysqli_fetch_array($query)){
+                        ?>
                             <div class="client">
                                 <div class="info">
                                     <img src="assets/images/bbank.png" width="40px"
                                     height="40px" alt="">
                                     <div>
-                                        <h4>Lewis S. Cunningham</h4>
+                                        <h4><?php echo $row['nombre']?></h4>
                                         <small>Client</small>
                                     </div>
-                                </div>
+                                </div>                                
                                 <div class="contact">
                                     <span class="las la-user-circle"></span>
                                     <span class="las la-comment"></span>
                                     <span class="las la-phone"></span>
                                 </div>
-                            </div>
-                            <div class="client">
-                                <div class="info">
-                                    <img src="assets/images/bbank.png" width="40px"
-                                    height="40px" alt="">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>Client</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>
-                                </div>
-                            </div>
-                            <div class="client">
-                                <div class="info">
-                                    <img src="assets/images/bbank.png" width="40px"
-                                    height="40px" alt="">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>Client</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>
-                                </div>
-                            </div>
-                            <div class="client">
-                                <div class="info">
-                                    <img src="assets/images/bbank.png" width="40px"
-                                    height="40px" alt="">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>Client</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>
-                                </div>
-                            </div>
-                        </div>
+                            </div>   
+                        <?php };?>                  
+
                     </div>
                 </div>
             </div>

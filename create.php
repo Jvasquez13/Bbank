@@ -78,7 +78,7 @@ die();
             <div class="user-wrapper">
                 <img src="assets/images/adminIcon.png" width="30px" height="30px" alt="">
                 <div>
-                    <h4>Admin</h4>
+                    <h4><?php echo $_SESSION['nombre'];?></h4>
                 </div>
             </div>
         </header>
@@ -87,24 +87,55 @@ die();
         
         <section class="container_admin">
             <img src="assets/images/bbank.png" class="avatar" srcset="">
+            
             <h1>User Registration</h1>
-            <form action="agregar.php" method="POST">
-                <input type="text" class="itext" placeholder="Full Name" name="nombre" required>
-                <input type="text" class="itext" placeholder="Email"name="email" required>
-                <input type="text" class="itext" placeholder="Username" name="usuario" required>
-                <input type= "password" class="itext" placeholder="Password" name="password" required><br>
-                <label for="rol">Rol:</label>
-                <select name="rol" class="itext">
-                <option value="1">Administrator</option>
-                <option value="0">User</option>
-                </select><br>
-                <label for="status">Status:</label>
-                <select name="status" class="itext">
-                <option value="1">Active</option>
-                <option value="0">Desactivate</option>
-                </select><br>
-                <input type="submit" class="btnRegistrar" value="Register"/>
-            </form>
+                <form action="agregar.php" method="POST">
+                <div class="field">
+                    <input type="text" name="name" id="name" required>
+                    <span></span>
+                    <label>Full Name</label>
+                </div>
+                <div class="field">
+                    <input type="text" name="email" id="email" required>
+                    <span></span>
+                    <label>Email</label>
+                </div>
+                <div class="field">
+                    <input type="text" name="username" id="username" required>
+                    <span></span>
+                    <label>Username</label>
+                </div>
+                <div class="field">
+                    <input type="text" name="clave" id="clave" required>
+                    <span></span>
+                    <label>Password</label>
+                </div>
+
+
+                <select name="" id="">
+                    <option selected class="selected">
+                        Choose rol: <i class="las la-angle-down"></i>
+                    </option>
+                    <option value="1">
+                        Administrador
+                    </option>
+                    <option value="0">
+                        Usuario
+                    </option>
+                
+                </select>
+                    <label for="rol">Rol:</label>
+                    <select name="rol" class="itext">
+                    <option value="1">Administrator</option>
+                    <option value="0">User</option>
+                    </select><br>
+                    <label for="status">Status:</label>
+                    <select name="status" class="itext">
+                    <option value="1">Active</option>
+                    <option value="0">Desactivate</option>
+                    </select><br>
+                    <input type="submit" class="btnRegistrar" value="Register"/>
+                </form>
         </section>
             
     </main>

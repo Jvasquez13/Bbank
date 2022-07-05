@@ -22,6 +22,7 @@ die();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <title>BBank Admin</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="assets/css/estilosAdmin1.css">
@@ -75,62 +76,37 @@ die();
                 Clients
             </h2>
 
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input onkeyup="buscar_ahora($('#buscar').val());" type="text" id="buscar" name="buscar" placeholder="Search by name"/>
+            </div>
+
+            <script type="text/javascript">
+                function buscar_ahora(buscar){
+                    var parametros = {"buscar":buscar};
+                    $.ajax({
+                        data:parametros,
+                        type:'POST',
+                        url:'buscador.php',
+                        success:function(data){
+                            document.getElementById("datos_buscador").innerHTML = data;
+                        }
+                    });
+                }
+                buscar_ahora();
+            </script>
             <div class="user-wrapper">
                 <img src="assets/images/adminIcon.png" width="30px" height="30px" alt="">
                 <div>
-                    <h4>Admin</h4>
+                    <h4><?php echo $_SESSION['nombre'];?></h4>
                 </div>
             </div>
         </header>
 
     <main>
-    
-        <div class="container__Tabla">
-            <div class="tabla__header">
-                <h2>Banking Users</h2>
-                <a href="create.php"><button>New User</button></a>
-                <img src="assets/images/bbank.png" class="avatar" srcset="">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Rol</th>
-                                <th>Status</th>
-                             </tr>
-                        </thead>
-                            <tbody>
-                            <?php
-                                include('db.php');
-                                $sql = "SELECT * from usuarios";
-                                $query = mysqli_query($conexion,$sql);
-                                while($row=mysqli_fetch_array($query)){
-                                    $rowcount = mysqli_num_rows($query);
-                            ?>
-                             <tr>
-                                <th><?php echo $row['id']?></th>
-                                <th><?php echo $row['nombre']?></th>
-                                <th><?php echo $row['email']?></th>
-                                <th><?php echo $row['usuario']?></th>
-                                <th><?php echo $row['password']?></th>
-                                <th><?php echo $row['rol']?></th>
-                                <th><?php echo $row['status']?></th>
-                                <th><a href="delete.php?id=<?php echo $row['id']?>"> <i class="fa-solid fa-person-circle-minus" id="icons"></i></a></th>
-                                </tr>
-                                <?php
-                                    }
-                                ?>
-                            </tbody>
-                    </table>
-                    <div class="tabla__footer">
-                        <p> Total of users:  <?php print $rowcount?>
-                    </div>
-                </div>
-            </div>
-       </div>
+
+        <div id="datos_buscador"></div>
+
     </main>
     
     <script src="assets/js/scriptAdmin.js"></script>
