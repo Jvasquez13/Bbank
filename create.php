@@ -112,28 +112,17 @@ die();
                 </div>
 
 
-                <select name="" id="">
-                    <option selected class="selected">
-                        Choose rol: <i class="las la-angle-down"></i>
-                    </option>
-                    <option value="1">
-                        Administrador
-                    </option>
-                    <option value="0">
-                        Usuario
-                    </option>
-                
+                <select name="rol" id="rol" >
+                    <option selected class="selected">Choose rol:</option>
+                    <option value="1">Administrador</option>
+                    <option value="0">Usuario</option>
                 </select>
-                    <label for="rol">Rol:</label>
-                    <select name="rol" class="itext">
-                    <option value="1">Administrator</option>
-                    <option value="0">User</option>
-                    </select><br>
-                    <label for="status">Status:</label>
-                    <select name="status" class="itext">
+                <br>
+                <select name="status" id="status">
+                    <option selected class="selected">Choose status:</option>
                     <option value="1">Active</option>
                     <option value="0">Desactivate</option>
-                    </select><br>
+                </select>
                     <input type="submit" class="btnRegistrar" value="Register"/>
                 </form>
         </section>

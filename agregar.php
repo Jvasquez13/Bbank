@@ -1,9 +1,9 @@
 <?php
 
-$nombre = $_POST['nombre'];
+$nombre = $_POST['name'];
 $email = $_POST['email'];
-$usuario = $_POST['usuario'];
-$password = $_POST['password'];
+$usuario = $_POST['username'];
+$password = $_POST['clave'];
 $rol = $_POST['rol'];
 $status = $_POST['status'];
 
