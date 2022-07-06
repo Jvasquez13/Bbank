@@ -58,7 +58,7 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     color: var(--main-color);
-    border-radius: 30px 0px 0px 30px
+    border-radius: 30px 0px 0px 30px;
 }
 
 .sidebar-menu a span:first-child {
@@ -238,24 +238,40 @@ main {
 }
 
 table {
-    border-collapse: collapse;
+    margin-top: 30px;
+    width: 100%;
 }
 
-thead tr {
-    border-top: 1px solid#f0f0f0;
-    border-bottom: 1px solid#f0f0f0;
+thead tr th{
+    color: #fff;/*Color del encabezado de la tabla*/
+    border-top: 2px solid#f0f0f0; /*Linea añadida al titu*/
+    border-bottom: 2px solid#f0f0f0;
 }
 
 thead td {
     font-weight: 700;
 }
 
-td {
-    padding: .5rem 1rem;
-    font-size: .9rem;
+th {
+    background-color: var(--main-color);
+    padding: .5rem 1.2rem;
+    font-size: 1rem;
+}
+tr:hover td{
+    transform: translateX(10px);
+    /*transform: translate(3px,-2px);*/
+    transition: .7s;
+    background-color: #d88f9d;
     color: #222
 }
-
+td{
+    transition: .7s;
+    /*margin-top: 10px;*/
+    padding: .5rem 1.2rem;
+    font-size: 1rem;
+    /*color: #222;*/
+    text-align: center;
+}
 td .status {
     display: inline-block;
     height: 10px;
@@ -376,48 +392,6 @@ tr td:last-child {
     }
 }
 
-.container_admin {
-    width: 80%;
-    margin: auto;
-    margin-top: 20px;
-    align-items: center;
-    position: relative;
-    background-color: rgb(245, 245, 245);
-    padding-bottom: 10px;
-    border-radius: 15px;
-    box-sizing: border-box;
-}
-
-.container_admin form input {
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px;
-    border: none;
-    background: #f3ecec;
-    font-size: 16px;
-    outline: none;
-    align-content: center;
-}
-
-.container_admin .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    position: absolute;
-    top: -50px;
-    left: calc(50%-50px);
-}
-
-.container_admin h1 {
-    /*color: #db616b;*/
-    font-family: 'Roboto', sans-serif;
-    color: rgb(196, 50, 58);
-    font-size: 28px;
-    width: 100%;
-    padding: 55px 0 40px;
-    text-align: center;
-}
-
 .itext {
     width: 250px;
     border: none;
@@ -433,38 +407,21 @@ tr td:last-child {
 .itext:hover {
     border-bottom: 2px solid rgb(196, 50, 58);
 }
-
-.btnRegistrar {
-    padding: 10px 40px;
-    margin-top: 40px;
-    border: none;
-    font-size: 14px;
-    background: #db616b;
-    color: rgb(201, 84, 84);
-    cursor: pointer;
-    outline: none;
-}
-
-.btnRegistrar:hover {
-    transition: .9s ease all;
-    transition-delay: 0.1s;
-    background-color: rgb(196, 50, 58);
-    color: rgb(240, 234, 234);
-    cursor: pointer;
-}
-
 .container__Tabla {
-    width: 90%;
-    margin: auto;
+    /*width: 1150px;*//*Estos 2 comentarios cambian el tamaño segun el menu*/
+    width: 100%;/**/
+    /*margin: auto; Inutil*/
     margin-top: 20px;
     align-items: center;
     position: relative;
     flex-direction: column;
     box-shadow: 8px 8px 5px 0px #bdbdbdbf;
-    background-color: #ecd7d7;
-    border-radius: 30px;
+    background-color: rgb(231, 202, 216);
+    border-radius: 10px;
 }
-
+.tabla__footer{
+    text-align: right;
+}
 .tabla__header {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
@@ -476,26 +433,37 @@ tr td:last-child {
 }
 
 button {
-    border: none;
+    border: 1px solid;
     margin-top: 20px;
-    background-color: #ce5b64;
+    background-color: var(--main-color)/*#ce5b64*/;
     color: #ffff;
     padding: 10px 30px;
-    border-radius: 20px;
+    border-radius: 10px;
     text-transform: uppercase;
     font-size: 14px;
+    transition: .4s;
     cursor: pointer;
 }
 
 button:hover {
+    border: 1px solid var(--main-color);
+    transition: .4s;
     background-color: #d88f9d;
+    color: var(--color-dark);
 }
 
 #icons {
-    font-size: 20px;
+    transition: .6s;
+    font-size: 25px;
     cursor: pointer;
     margin-left: 10px;
     color: #020202;
+}
+#icons:hover {
+    border-radius: 6px;
+    transition: .6s;
+    transform: translateY(-4.9px);
+    color: var(--main-color);
 }
 
 .container__Tabla .avatar {
@@ -506,4 +474,190 @@ button:hover {
     top: -30px;
     right: -10px;
     right: calc(50%-230px);
+}
+/*De Jarol para el create*/
+form .field{
+    position: relative;
+    border-bottom: 2px solid #d88f9d;/*linea inferior*/
+    margin: 12px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.field input{
+    /*width: 100%;*/
+    padding: 0 5px;
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+.field label{
+    margin-left: 15px;
+    position: absolute;
+    top: 70%;
+    left: 5px;
+    /*color: #adadad;*/
+    color: #717171;
+    transform: translateY(-70%);
+    font-size: 18px;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .7s;
+}
+.field span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 3.5px;
+    margin-top: 10px;
+    background: var(--main-color);
+    transition: .7s; 
+}
+.field input:focus ~ label,
+.field input:valid ~ label{
+    top: 10px;
+    /*left: 25px;*/
+    left: 45%;
+    color: var(--main-color);
+}
+.field input:focus ~ span::before,
+.field input:valid ~ span::before{
+    width: 100%;
+}
+/*Para el boton*/
+/*.btnRegistrar{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 25px;
+    font-size: 18px;
+    background: #ff66a3;
+    color: var(--main-color);
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: .6s;
+}
+.btnRegistrar:hover{
+    background: var(--main-color);
+    color: #fff;
+    transition: .6s;
+}*/
+
+.container_admin {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    align-items: center;
+    position: relative;
+    /*background-color: rgb(245, 245, 245);*/
+    background: rgb(231, 202, 216);
+    padding-bottom: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 8px 8px 5px 0px #bdbdbdbf;
+}
+
+.container_admin form input {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    /*background: #ece5e8;*/
+    font-size: 20px;
+    outline: none;
+    align-content: center;
+}
+
+.container_admin .avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    position: absolute;
+    top: -30px;
+    right: -10px;
+    right: calc(50%-230px);/*
+    top: -50px;
+    left: calc(50%-50px);*/
+}
+
+.container_admin h1 {
+    /*color: #db616b;*/
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    font-size: 28px;
+    width: 100%;
+    padding: 30px 30px 40px;
+}
+.btnRegistrar {
+    padding: 10px 40px;
+    margin-top: 40px;
+    font-weight: 500;
+    border: none;
+    font-size: 14px;
+    background: var(--main-color);
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: .6s;
+}
+
+.btnRegistrar:hover {
+    transition: .6s ease all;
+    transition-delay: 0.1s;
+    font-weight: 500;
+    background: #d88f9d;
+    color: black;
+    cursor: pointer;
+}
+
+
+select{
+    /*position: absolute;*/
+    /*transform: translate(-50%,-50%);
+    /*top: 50%;
+    left: 50%;*/
+    /*margin-bottom: 20px;*/
+    margin-top: 15px;/*Para separar en el eje Y*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 225px;
+    padding: 4px 8px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: #fff;
+    border: 4px solid var(--main-color);
+    border-radius: 10px;
+    background-image: url("../images/arrow-down.png");
+    background-repeat: no-repeat;
+    background-size: 32px;
+    background-position: 180px 0;
+    outline: none;
+    box-shadow: 0 0 20px rgb(20, 20, 30, .25);
+}
+select::-ms-expand{
+    display: none;
+}
+select:hover{
+    border: 4px solid #d88f9d;
+}
+select option{
+    background-color: #d88f9d;/*var(--main-color);*/
+    letter-spacing: 1.2px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+}
+.selected{
+    display: none;
 }
