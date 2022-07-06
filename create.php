@@ -114,8 +114,8 @@ die();
 
                 <select name="rol" id="rol" >
                     <option selected class="selected">Choose rol:</option>
-                    <option value="1">Administrador</option>
-                    <option value="0">Usuario</option>
+                    <option value="1">Administrator</option>
+                    <option value="0">User</option>
                 </select>
                 <br>
                 <select name="status" id="status">

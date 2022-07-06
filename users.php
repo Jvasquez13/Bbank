@@ -43,11 +43,11 @@ die();
                     <span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="create.php" ><span class="las la-users"></span>
+                    <a href="create.php" ><span class="las la-user-plus"></span>
                     <span>Create Clients</span></a>
                 </li>
                 <li>
-                    <a href="users.php" class="active"><span class="las la-user-plus"></span>
+                    <a href="users.php" class="active"><span class="las la-users"></span>
                     <span>Clients</span></a>
                 </li>
                 <li>
