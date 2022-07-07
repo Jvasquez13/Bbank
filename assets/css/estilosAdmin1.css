@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 :root {
-    --main-color: #DD2F6E;
-    --color-dark: #1D2231;
-    --text-gray: #8390A2;
+    --main-color: #dd2f6e;
+    --color-dark: #1d2231;
+    --text-gray: #8390a2;
 }
 
 * {
@@ -143,7 +143,7 @@ header label span {
 
 .search-wrapper input {
     height: 100%;
-    padding: .5rem;
+    padding: 0.5rem;
     border: none;
     outline: none;
 }
@@ -201,7 +201,7 @@ main {
 .cards-single:last-child h1,
 .cards-single:last-child div:first-child span,
 .cards-single:last-child div:last-child span {
-    color: #fff
+    color: #fff;
 }
 
 .recent-grid {
@@ -232,8 +232,8 @@ main {
     background: var(--main-color);
     border-radius: 10px;
     color: #fff;
-    font-size: .8rem;
-    padding: .5rem 1rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
     border: 1px solid var(--main-color);
 }
 
@@ -242,9 +242,11 @@ table {
     width: 100%;
 }
 
-thead tr th{
-    color: #fff;/*Color del encabezado de la tabla*/
-    border-top: 2px solid#f0f0f0; /*Linea añadida al titu*/
+thead tr th {
+    color: #fff;
+    /*Color del encabezado de la tabla*/
+    border-top: 2px solid#f0f0f0;
+    /*Linea añadida al titu*/
     border-bottom: 2px solid#f0f0f0;
 }
 
@@ -254,24 +256,27 @@ thead td {
 
 th {
     background-color: var(--main-color);
-    padding: .5rem 1.2rem;
+    padding: 0.5rem 1.2rem;
     font-size: 1rem;
 }
-tr:hover td{
+
+tr:hover td {
     transform: translateX(10px);
     /*transform: translate(3px,-2px);*/
-    transition: .7s;
+    transition: 0.7s;
     background-color: #d88f9d;
-    color: #222
+    color: #222;
 }
-td{
-    transition: .7s;
+
+td {
+    transition: 0.7s;
     /*margin-top: 10px;*/
-    padding: .5rem 1.2rem;
+    padding: 0.5rem 1.2rem;
     font-size: 1rem;
     /*color: #222;*/
     text-align: center;
 }
+
 td .status {
     display: inline-block;
     height: 10px;
@@ -306,7 +311,7 @@ tr td:last-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem .7rem;
+    padding: 0.5rem 0.7rem;
 }
 
 .info {
@@ -320,7 +325,7 @@ tr td:last-child {
 }
 
 .info h4 {
-    font-size: .8rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: #222;
 }
@@ -333,11 +338,11 @@ tr td:last-child {
 .contact span {
     font-size: 1.2rem;
     display: inline-block;
-    margin-left: .5rem;
-    color: var(--main-color)
+    margin-left: 0.5rem;
+    color: var(--main-color);
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
     .sidebar {
         width: 70px;
     }
@@ -407,9 +412,12 @@ tr td:last-child {
 .itext:hover {
     border-bottom: 2px solid rgb(196, 50, 58);
 }
+
 .container__Tabla {
-    /*width: 1150px;*//*Estos 2 comentarios cambian el tamaño segun el menu*/
-    width: 100%;/**/
+    /*width: 1150px;*/
+    /*Estos 2 comentarios cambian el tamaño segun el menu*/
+    width: 100%;
+    /**/
     /*margin: auto; Inutil*/
     margin-top: 20px;
     align-items: center;
@@ -419,9 +427,11 @@ tr td:last-child {
     background-color: rgb(231, 202, 216);
     border-radius: 10px;
 }
-.tabla__footer{
+
+.tabla__footer {
     text-align: right;
 }
+
 .tabla__header {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
@@ -435,33 +445,35 @@ tr td:last-child {
 button {
     border: 1px solid;
     margin-top: 20px;
-    background-color: var(--main-color)/*#ce5b64*/;
+    background-color: var(--main-color)/*#ce5b64*/
+    ;
     color: #ffff;
     padding: 10px 30px;
     border-radius: 10px;
     text-transform: uppercase;
     font-size: 14px;
-    transition: .4s;
+    transition: 0.4s;
     cursor: pointer;
 }
 
 button:hover {
     border: 1px solid var(--main-color);
-    transition: .4s;
+    transition: 0.4s;
     background-color: #d88f9d;
     color: var(--color-dark);
 }
 
 #icons {
-    transition: .6s;
+    transition: 0.6s;
     font-size: 25px;
     cursor: pointer;
     margin-left: 10px;
     color: #020202;
 }
+
 #icons:hover {
     border-radius: 6px;
-    transition: .6s;
+    transition: 0.6s;
     transform: translateY(-4.9px);
     color: var(--main-color);
 }
@@ -475,15 +487,20 @@ button:hover {
     right: -10px;
     right: calc(50%-230px);
 }
+
+
 /*De Jarol para el create*/
-form .field{
+
+form .field {
     position: relative;
-    border-bottom: 2px solid #d88f9d;/*linea inferior*/
+    border-bottom: 2px solid #d88f9d;
+    /*linea inferior*/
     margin: 12px;
     margin-left: 15px;
     margin-right: 15px;
 }
-.field input{
+
+.field input {
     /*width: 100%;*/
     padding: 0 5px;
     height: 30px;
@@ -493,7 +510,8 @@ form .field{
     background: none;
     outline: none;
 }
-.field label{
+
+.field label {
     margin-left: 15px;
     position: absolute;
     top: 70%;
@@ -504,9 +522,10 @@ form .field{
     font-size: 18px;
     font-weight: 500;
     pointer-events: none;
-    transition: .7s;
+    transition: 0.7s;
 }
-.field span::before{
+
+.field span::before {
     content: '';
     position: absolute;
     top: 40px;
@@ -515,20 +534,26 @@ form .field{
     height: 3.5px;
     margin-top: 10px;
     background: var(--main-color);
-    transition: .7s; 
+    transition: 0.7s;
 }
-.field input:focus ~ label,
-.field input:valid ~ label{
+
+.field input:focus~label,
+.field input:valid~label {
     top: 10px;
     /*left: 25px;*/
     left: 45%;
     color: var(--main-color);
 }
-.field input:focus ~ span::before,
-.field input:valid ~ span::before{
+
+.field input:focus~span::before,
+.field input:valid~span::before {
     width: 100%;
 }
+
+
 /*Para el boton*/
+
+
 /*.btnRegistrar{
     width: 100%;
     height: 50px;
@@ -581,7 +606,8 @@ form .field{
     position: absolute;
     top: -30px;
     right: -10px;
-    right: calc(50%-230px);/*
+    right: calc(50%-230px);
+    /*
     top: -50px;
     left: calc(50%-50px);*/
 }
@@ -594,6 +620,7 @@ form .field{
     width: 100%;
     padding: 30px 30px 40px;
 }
+
 .btnRegistrar {
     padding: 10px 40px;
     margin-top: 40px;
@@ -604,11 +631,11 @@ form .field{
     color: #fff;
     cursor: pointer;
     outline: none;
-    transition: .6s;
+    transition: 0.6s;
 }
 
 .btnRegistrar:hover {
-    transition: .6s ease all;
+    transition: 0.6s ease all;
     transition-delay: 0.1s;
     font-weight: 500;
     background: #d88f9d;
@@ -616,20 +643,20 @@ form .field{
     cursor: pointer;
 }
 
-
-select{
+select {
     /*position: absolute;*/
     /*transform: translate(-50%,-50%);
     /*top: 50%;
     left: 50%;*/
     /*margin-bottom: 20px;*/
-    margin-top: 15px;/*Para separar en el eje Y*/
+    margin-top: 15px;
+    /*Para separar en el eje Y*/
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 225px;
     padding: 4px 8px;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 16px;
     letter-spacing: 0.5px;
@@ -638,26 +665,31 @@ select{
     color: #fff;
     border: 4px solid var(--main-color);
     border-radius: 10px;
-    background-image: url("../images/arrow-down.png");
+    background-image: url('../images/arrow-down.png');
     background-repeat: no-repeat;
     background-size: 32px;
     background-position: 180px 0;
     outline: none;
-    box-shadow: 0 0 20px rgb(20, 20, 30, .25);
+    box-shadow: 0 0 20px rgb(20, 20, 30, 0.25);
 }
-select::-ms-expand{
+
+select::-ms-expand {
     display: none;
 }
-select:hover{
+
+select:hover {
     border: 4px solid #d88f9d;
 }
-select option{
-    background-color: #d88f9d;/*var(--main-color);*/
+
+select option {
+    background-color: #d88f9d;
+    /*var(--main-color);*/
     letter-spacing: 1.2px;
     color: #fff;
     font-weight: 600;
     font-size: 16px;
 }
-.selected{
+
+.selected {
     display: none;
 }
