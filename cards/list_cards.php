@@ -100,26 +100,33 @@ die();
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Email</th>
                 <th>Account</th>
                 <th>Card Number</th>
                 <th>Creation Date</th>
                 <th>Expiration Date</th>
                 <th>CVV</th>
+                <?php 
+                  $rol = $_SESSION['rol'];
+                  if($rol == 1) :?>
                 <th></th>
+                <?php endif; ?>
               </tr>
             </thead>
             <tbody>
               <?php
                 include('../db.php');
-                $sql = "SELECT u.nombre, u.email, c.cuenta, t.numero, t.id, t.fecha_creacion, t.fecha_expiracion, t.cvv FROM usuarios u INNER JOIN cuentas c ON u.id = c.id_usuario INNER JOIN tarjetas t ON t.id_cuenta = c.id_usuario;";
+                $id = $_SESSION['id'];
+                if($rol == 1) {
+                  $sql = "SELECT u.nombre, u.email, c.cuenta, t.numero, t.id, t.fecha_creacion, t.fecha_expiracion, t.cvv FROM usuarios u INNER JOIN cuentas c ON u.id = c.id_usuario INNER JOIN tarjetas t ON t.id_cuenta = c.id_usuario;";
+                } else {
+                  $sql = "SELECT u.nombre, u.email, c.cuenta, t.numero, t.id, t.fecha_creacion, t.fecha_expiracion, t.cvv FROM usuarios u INNER JOIN cuentas c ON u.id = c.id_usuario INNER JOIN tarjetas t ON t.id_cuenta = c.id_usuario WHERE $id = t.id_cuenta;";
+                };
                 $query = mysqli_query($conexion,$sql);
                 while($row=mysqli_fetch_array($query)){
                 $rowcount = mysqli_num_rows($query);
               ?>
               <tr>
                 <td><?php echo $row['nombre']?></td>
-                <td><?php echo $row['email']?></td>
                 <td><?php echo $row['cuenta']?></td>
                 <td><?php echo $row['numero']?></td>
                 <td><?php echo $row['fecha_creacion']?></td>
@@ -137,9 +144,12 @@ die();
               ?>
             </tbody>
           </table>
+          <?php 
+            if($rol == 1) :?>
           <div class="tabla__footer">
             <p> Total accounts with card: <?php print $rowcount;?>
           </div>
+          <?php endif; ?>
           <?php 
             if($rol == 0) :?>
           <a href="../transfers/transfer.php"><button>New Transfer</button></a>
