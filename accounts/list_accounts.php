@@ -100,31 +100,30 @@ die();
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Rol</th>
-                <th>Status User</th>
                 <th>Account</th>
                 <th>Amount</th>
+                <?php 
+                  $rol = $_SESSION['rol'];
+                  if($rol == 1) :?>
                 <th></th>
+                <?php endif; ?>
               </tr>
             </thead>
             <tbody>
               <?php
                 include('../db.php');
-                $sql = "SELECT * FROM usuarios u INNER JOIN cuentas c ON c.id_usuario = u.id";
+                $id = $_SESSION['id'];
+                if($rol == 1) {
+                  $sql = "SELECT * FROM usuarios u INNER JOIN cuentas c ON c.id_usuario = u.id;";
+                } else {
+                  $sql = "SELECT * FROM usuarios u INNER JOIN cuentas c ON c.id_usuario = u.id WHERE $id = c.id_usuario;";
+                };
                 $query = mysqli_query($conexion,$sql);
                 while($row=mysqli_fetch_array($query)){
                 $rowcount = mysqli_num_rows($query);
               ?>
               <tr>
                 <td><?php echo $row['nombre']?></td>
-                <td><?php echo $row['email']?></td>
-                <td><?php echo $row['usuario']?></td>
-                <td><?php echo $row['password']?></td>
-                <td><?php echo $row['rol']?></td>
-                <td><?php echo $row['status']?></td>
                 <td><?php echo $row['cuenta']?></td>
                 <td><?php echo $row['dinero']?></td>
                 <?php 
@@ -139,9 +138,12 @@ die();
               ?>
             </tbody>
           </table>
+          <?php 
+            if($rol == 1) :?>
           <div class="tabla__footer">
-            <p> Total users with account: <?php print $rowcount;?>
+            <p> Total users with accounts: <?php print $rowcount;?>
           </div>
+          <?php endif; ?>
           <?php 
             if($rol == 0) :?>
           <a href="../transfers/transfer.php"><button>New Transfer</button></a>
