@@ -33,7 +33,7 @@ die();
   <input type="checkbox" id="nav-toggle">
   <div class="sidebar">
     <div class="sidebar-brand">
-      <h2><span class="lab la-accusoft"> <span><?php echo $_SESSION["nombre"]?></span></span></h2>
+      <h2><span class="las la-university"><span>BBank Admin</span></span></h2>
     </div>
 
     <div class="sidebar-menu">
@@ -129,8 +129,7 @@ die();
                 <?php 
                   $rol = $_SESSION['rol'];
                   if($rol == 1) :?>
-                <td><a href="delete_account.php?id=<?php echo $row['id']?>"><i class="las la-trash" id='icons'></i></a>
-                </td>
+                <td><a href="delete_account.php?id=<?php echo $row['id']?>"><i class="las la-trash" id='icons'></i></a></td>
                 <?php endif; ?>
               </tr>
               <?php

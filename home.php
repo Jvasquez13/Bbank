@@ -51,11 +51,11 @@
             <span>Home</span></a>
         </li>
         <li>
-          <a href="accounts/list_accounts.php"><span class="las la-piggy-bank"></span>
+          <a href="accounts/accounts_user.php"><span class="las la-piggy-bank"></span>
             <span>Bank Accounts</span></a>
         </li>
         <li>
-          <a href="cards/list_cards.php"><span class="las la-credit-card"></span>
+          <a href="cards/cards_user.php"><span class="las la-credit-card"></span>
             <span>Credit Cards</span></a>
         </li>
         <li>

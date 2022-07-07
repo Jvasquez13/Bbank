@@ -33,29 +33,21 @@ die();
   <input type="checkbox" id="nav-toggle">
   <div class="sidebar">
     <div class="sidebar-brand">
-      <h2><span class="las la-university"><span>BBank Admin</span></span></h2>
+        <h2><span class="las la-university"><span>BBank</span></span></h2>
     </div>
 
     <div class="sidebar-menu">
       <ul>
         <li>
-          <a href="../admin.php"><span class="las la-igloo"></span>
-            <span>Dashboard</span></a>
+          <a href="../home.php"><span class="las la-igloo"></span>
+            <span>Home</span></a>
         </li>
         <li>
-          <a href="../create.php"><span class="las la-users"></span>
-            <span>Create Clients</span></a>
-        </li>
-        <li>
-          <a href="../users.php"><span class="las la-user-plus"></span>
-            <span>Clients</span></a>
-        </li>
-        <li>
-          <a href="../accounts/list_accounts.php"><span class="las la-user-circle"></span>
+          <a href="accounts/accounts_user.php" class="active"><span class="las la-piggy-bank"></span>
             <span>Bank Accounts</span></a>
         </li>
         <li>
-          <a href="../cards/list_cards.php" class="active"><span class="las la-credit-card"></span>
+          <a href="../cards/cards_user.php"><span class="las la-credit-card"></span>
             <span>Credit Cards</span></a>
         </li>
         <li>
@@ -73,11 +65,11 @@ die();
           <span class="las la-bars"></span>
         </label>
 
-        Cards
+        Accounts
       </h2>
 
       <div class="user-wrapper">
-        <img src="../assets/images/adminIcon.png" width="30px" height="30px" alt="">
+        <img src="../assets/images/userIcono.png" width="30px" height="30px" alt="">
         <div>
           <h4><?php echo $_SESSION["nombre"]?></h4>
         </div>
@@ -87,68 +79,41 @@ die();
     <main>
       <div class="container__Tabla">
         <div class="tabla__header">
-          <h2>Cards</h2>
-
-          <?php 
-            $rol = $_SESSION['rol'];
-            if($rol == 1) :?>
-          <a href="create_cards.php"><button>Add Card</button></a>
-          <?php endif; ?>
+          <h2>Accounts</h2>
 
           <img src="../assets/images/bbank.png" class="avatar" srcset="">
           <table>
             <thead>
               <tr>
-                <th>Name</th>
+                
                 <th>Account</th>
-                <th>Card Number</th>
-                <th>Creation Date</th>
-                <th>Expiration Date</th>
-                <th>CVV</th>
+                <th>Amount</th>
                 <?php 
                   $rol = $_SESSION['rol'];
-                  if($rol == 1) :?>
-                <?php endif; ?>
+                 ?>
               </tr>
             </thead>
             <tbody>
               <?php
                 include('../db.php');
                 $id = $_SESSION['id'];
-                if($rol == 1) {
-                  $sql = "SELECT u.nombre, u.email, c.cuenta, t.numero, t.id, t.fecha_creacion, t.fecha_expiracion, t.cvv FROM usuarios u INNER JOIN cuentas c ON u.id = c.id_usuario INNER JOIN tarjetas t ON t.id_cuenta = c.id_usuario;";
-                } else {
-                  $sql = "SELECT u.nombre, u.email, c.cuenta, t.numero, t.id, t.fecha_creacion, t.fecha_expiracion, t.cvv FROM usuarios u INNER JOIN cuentas c ON u.id = c.id_usuario INNER JOIN tarjetas t ON t.id_cuenta = c.id_usuario WHERE $id = t.id_cuenta;";
+                if($rol == 0) {
+                    $sql = "SELECT * FROM usuarios u INNER JOIN cuentas c ON c.id_usuario = u.id WHERE $id = c.id_usuario;";
                 };
+                
                 $query = mysqli_query($conexion,$sql);
                 while($row=mysqli_fetch_array($query)){
                 $rowcount = mysqli_num_rows($query);
               ?>
               <tr>
-                <td><?php echo $row['nombre']?></td>
                 <td><?php echo $row['cuenta']?></td>
-                <td><?php echo $row['numero']?></td>
-                <td><?php echo $row['fecha_creacion']?></td>
-                <td><?php echo $row['fecha_expiracion']?></td>
-                <td><?php echo $row['cvv']?></td>
-                <?php 
-                  $rol = $_SESSION['rol'];
-                  if($rol == 1) :?>
-                <td><a href="delete_card.php?id=<?php echo $row['id']?>"><i class="las la-trash" id='icons'></i></a>
-                </td>
-                <?php endif; ?>
-              </tr>
+                <td><?php echo $row['dinero']?></td>
               <?php
               }
               ?>
             </tbody>
           </table>
-          <?php 
-            if($rol == 1) :?>
-          <div class="tabla__footer">
-            <p> Total accounts with card: <?php print $rowcount;?>
-          </div>
-          <?php endif; ?>
+          
           <?php 
             if($rol == 0) :?>
           <a href="../transfers/transfer.php"><button>New Transfer</button></a>
@@ -160,5 +125,4 @@ die();
 
   <script src="../assets/js/scriptAdmin.js"></script>
 </body>
-
 </html>

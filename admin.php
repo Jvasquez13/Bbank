@@ -35,7 +35,7 @@ die();
   <input type="checkbox" id="nav-toggle">
   <div class="sidebar">
     <div class="sidebar-brand">
-      <h2><span class="lab la-accusoft"> <span>Admin</span></span></h2>
+      <h2><span class="las la-university"><span>BBank Admin</span></span></h2>
     </div>
 
     <div class="sidebar-menu">
@@ -113,7 +113,16 @@ die();
 
         <div class="cards-single">
           <div>
-            <h1>54</h1>
+            <h1>
+
+            <?php
+                            include('db.php');
+                            $sql ="SELECT * FROM usuarios u INNER JOIN cuentas c ON c.id_usuario = u.id;";
+                            $query = mysqli_query($conexion,$sql);
+                            $clientes = mysqli_num_rows($query);
+                            echo $clientes;
+                            ?>
+            </h1>
             <span>Accounts</span>
           </div>
           <div>
@@ -123,7 +132,16 @@ die();
 
         <div class="cards-single">
           <div>
-            <h1>44</h1>
+            <h1>
+            <?php
+                            include('db.php');
+                            $sql = "SELECT u.nombre, u.email, c.cuenta, t.numero, t.id, t.fecha_creacion, t.fecha_expiracion, t.cvv FROM usuarios u INNER JOIN cuentas c ON u.id = c.id_usuario INNER JOIN tarjetas t ON t.id_cuenta = c.id_usuario;";
+                            $query = mysqli_query($conexion,$sql);
+                            $clientes = mysqli_num_rows($query);
+                            echo $clientes;
+                            ?>
+
+            </h1>
             <span>Cards</span>
           </div>
           <div>
@@ -133,7 +151,15 @@ die();
 
         <div class="cards-single">
           <div>
-            <h1>$300k</h1>
+            <h1>
+            <?php
+                            include('db.php');
+                            $sql = "SELECT SUM(dinero) as mtotal FROM cuentas";
+                            $query = mysqli_query($conexion,$sql);
+                            $income = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                            echo $income["mtotal"];
+                            ?>
+            </h1>
             <span>Income</span>
           </div>
           <div>

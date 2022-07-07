@@ -286,7 +286,6 @@ td .status {
 }
 
 tr td:last-child {
-    display: flex;
     align-items: center;
 }
 
