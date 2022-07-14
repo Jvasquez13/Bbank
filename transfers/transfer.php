@@ -37,7 +37,7 @@ if (!isset($_SESSION['usuario'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Transactions</title>
-  <link rel="stylesheet" href="../assets/css/styletranfer.css">
+  <link rel="stylesheet" href="../css/styletranfer.css">
 
 </head>
 
@@ -89,7 +89,7 @@ if (!isset($_SESSION['usuario'])) {
           <table class='order-table'>
             <tbody>
               <tr>
-                <td><img src='../assets/images/creditcard.png' class='full-width'></img>
+                <td><img src='../images/creditcard.png' class='full-width'></img>
                 </td>
                 <td>
                   <br> <span class='thin'>Card Number</span>
@@ -116,7 +116,7 @@ if (!isset($_SESSION['usuario'])) {
           <table class='order-table'>
             <tbody>
               <tr>
-                <td><img src='../assets/images/institutionss.png' class='full-width'></img>
+                <td><img src='../images/institutionss.png' class='full-width'></img>
                 </td>
                 <td>
                   <br> <span class='thin'>Institution</span>
@@ -132,7 +132,7 @@ if (!isset($_SESSION['usuario'])) {
       <div class='credit-info'>
         <div class='credit-info-content'>
           
-            <img src="../assets/images/bbank.png" height='200' class='Bbank-logo' id='Bbank-logo'></img>
+            <img src="../images/bbank.png" height='200' class='Bbank-logo' id='Bbank-logo'></img>
            
           <form action="transactionbutton.php" method="POST">
 
@@ -148,7 +148,7 @@ if (!isset($_SESSION['usuario'])) {
              <td> <b style="color:black">CVV</b>
                 <input type="text" name="cvv" class='input-field'></input>
               </td>
-              
+            
             </table>
             <button class='pay-btn'>Transfer</button>
           </form>
