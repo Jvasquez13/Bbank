@@ -2,16 +2,16 @@
 
 session_start();
 
-if(!isset($_SESSION['usuario'])){
+if (!isset($_SESSION['usuario'])) {
 
-    echo '
+  echo '
         <script>
             alert("Por favor debes iniciar sesión") 
             window.location = "login.php"; 
         </script>
-    ';        
-    session_destroy();
-die();
+    ';
+  session_destroy();
+  die();
 }
 
 ?>
@@ -24,8 +24,7 @@ die();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>BBank Admin</title>
-  <link rel="stylesheet"
-    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
   <link rel="stylesheet" href="assets/css/estilosAdmin1.css">
 
 </head>
@@ -86,7 +85,7 @@ die();
       <div class="user-wrapper">
         <img src="assets/images/adminIcon.png" width="30px" height="30px" alt="">
         <div>
-          <h4><?php echo $_SESSION['nombre'];?></h4>
+          <h4><?php echo $_SESSION['nombre']; ?></h4>
         </div>
       </div>
     </header>
@@ -97,12 +96,12 @@ die();
           <div>
             <h1>
               <?php
-                            include('db.php');
-                            $sql = "SELECT * FROM usuarios WHERE rol = 0 AND status = 1;";
-                            $query = mysqli_query($conexion,$sql);
-                            $clientes = mysqli_num_rows($query);
-                            echo $clientes;
-                            ?>
+              include('db.php');
+              $sql = "SELECT * FROM usuarios WHERE rol = 0 AND status = 1;";
+              $query = mysqli_query($conexion, $sql);
+              $clientes = mysqli_num_rows($query);
+              echo $clientes;
+              ?>
             </h1>
             <span>Clients</span>
           </div>
@@ -115,13 +114,13 @@ die();
           <div>
             <h1>
 
-            <?php
-                            include('db.php');
-                            $sql ="SELECT * FROM usuarios u INNER JOIN cuentas c ON c.id_usuario = u.id;";
-                            $query = mysqli_query($conexion,$sql);
-                            $clientes = mysqli_num_rows($query);
-                            echo $clientes;
-                            ?>
+              <?php
+              include('db.php');
+              $sql = "SELECT * FROM usuarios u INNER JOIN cuentas c ON c.id_usuario = u.id;";
+              $query = mysqli_query($conexion, $sql);
+              $clientes = mysqli_num_rows($query);
+              echo $clientes;
+              ?>
             </h1>
             <span>Accounts</span>
           </div>
@@ -133,13 +132,13 @@ die();
         <div class="cards-single">
           <div>
             <h1>
-            <?php
-                            include('db.php');
-                            $sql = "SELECT u.nombre, u.email, c.cuenta, t.numero, t.id, t.fecha_creacion, t.fecha_expiracion, t.cvv FROM usuarios u INNER JOIN cuentas c ON u.id = c.id_usuario INNER JOIN tarjetas t ON t.id_cuenta = c.id_usuario;";
-                            $query = mysqli_query($conexion,$sql);
-                            $clientes = mysqli_num_rows($query);
-                            echo $clientes;
-                            ?>
+              <?php
+              include('db.php');
+              $sql = "SELECT u.nombre, u.email, c.cuenta, t.numero, t.id, t.fecha_creacion, t.fecha_expiracion, t.cvv FROM usuarios u INNER JOIN cuentas c ON u.id = c.id_usuario INNER JOIN tarjetas t ON t.id_cuenta = c.id_usuario;";
+              $query = mysqli_query($conexion, $sql);
+              $clientes = mysqli_num_rows($query);
+              echo $clientes;
+              ?>
 
             </h1>
             <span>Cards</span>
@@ -152,13 +151,13 @@ die();
         <div class="cards-single">
           <div>
             <h1>
-            <?php
-                            include('db.php');
-                            $sql = "SELECT SUM(dinero) as mtotal FROM cuentas";
-                            $query = mysqli_query($conexion,$sql);
-                            $income = mysqli_fetch_array($query, MYSQLI_ASSOC);
-                            echo $income["mtotal"];
-                            ?>
+              <?php
+              include('db.php');
+              $sql = "SELECT SUM(dinero) as mtotal FROM cuentas";
+              $query = mysqli_query($conexion, $sql);
+              $income = mysqli_fetch_array($query, MYSQLI_ASSOC);
+              echo $income["mtotal"];
+              ?>
             </h1>
             <span>Income</span>
           </div>
@@ -230,25 +229,25 @@ die();
             </div>
             <div class="card-body">
               <?php
-                        $sql = "SELECT nombre FROM usuarios WHERE rol = 0 ORDER BY id DESC LIMIT 4;";
-                        $query = mysqli_query($conexion,$sql);
-                        while($row=mysqli_fetch_array($query)){
-                        ?>
-              <div class="client">
-                <div class="info">
-                  <img src="assets/images/bbank.png" width="40px" height="40px" alt="">
-                  <div>
-                    <h4><?php echo $row['nombre']?></h4>
-                    <small>Client</small>
+              $sql = "SELECT nombre FROM usuarios WHERE rol = 0 ORDER BY id DESC LIMIT 4;";
+              $query = mysqli_query($conexion, $sql);
+              while ($row = mysqli_fetch_array($query)) {
+              ?>
+                <div class="client">
+                  <div class="info">
+                    <img src="assets/images/bbank.png" width="40px" height="40px" alt="">
+                    <div>
+                      <h4><?php echo $row['nombre'] ?></h4>
+                      <small>Client</small>
+                    </div>
+                  </div>
+                  <div class="contact">
+                    <span class="las la-user-circle"></span>
+                    <span class="las la-comment"></span>
+                    <span class="las la-phone"></span>
                   </div>
                 </div>
-                <div class="contact">
-                  <span class="las la-user-circle"></span>
-                  <span class="las la-comment"></span>
-                  <span class="las la-phone"></span>
-                </div>
-              </div>
-              <?php };?>
+              <?php }; ?>
 
             </div>
           </div>

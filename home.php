@@ -1,25 +1,25 @@
 <?php
 
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['usuario'])){
+if (!isset($_SESSION['usuario'])) {
 
-        echo '
+  echo '
             <script>
                 alert("Por favor debes iniciar sesión") 
                 window.location = "login.php"; 
             </script>
-        ';        
-        session_destroy();
-    die();
-    }
+        ';
+  session_destroy();
+  die();
+}
 
-    $rol = $_SESSION['rol'];
+$rol = $_SESSION['rol'];
 
-    if($rol == 1){
-        header('location: admin.php');
-    }
-    
+if ($rol == 1) {
+  header('location: admin.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -30,8 +30,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>BBank Admin</title>
-  <link rel="stylesheet"
-    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
   <link rel="stylesheet" href="assets/css/estilosAdmin1.css">
 
 </head>
@@ -79,20 +78,47 @@
       <div class="user-wrapper">
         <img src="assets/images/userIcono.png" width="30px" height="30px" alt="">
         <div>
-          <h4><?php echo $_SESSION["nombre"]?></h4>
+          <h4><?php echo $_SESSION["nombre"] ?></h4>
         </div>
       </div>
     </header>
 
     <main>
-      <h1>Welcome back, <?php echo $_SESSION["nombre"]?>!!!</h1><br>
+      <h1>Welcome back, <?php echo $_SESSION["nombre"] ?>!!!</h1><br>
 
       <div class="cards">
 
         <div class="cards-single">
           <div>
-            <h1>$3200</h1>
-            <span>Balance</span>
+            <table>
+              <thead>
+                <tr>
+                  <?php
+                  $rol = $_SESSION['rol'];
+                  ?>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                include('db.php');
+                $id = $_SESSION['id'];
+                if ($rol == 0) {
+                  $sql = "SELECT * FROM usuarios u INNER JOIN cuentas c ON c.id_usuario = u.id WHERE $id = c.id_usuario;";
+                };
+
+                $query = mysqli_query($conexion, $sql);
+                while ($row = mysqli_fetch_array($query)) {
+                  $rowcount = mysqli_num_rows($query);
+                ?>
+                  <tr>
+                    <h1><?php echo $row['dinero'] ?></h1>
+                    <span>Balance</span>
+                  <?php
+                }
+                  ?>
+              </tbody>
+            </table>
+
           </div>
           <div>
             <span class="lab la-google-wallet"></span>
@@ -145,35 +171,39 @@
                 <table width="100%">
                   <thead>
                     <tr>
-                      <th>Pay Id</th>
+                      <?php
+                      $rol = $_SESSION['rol'];
+                      ?>
+                      <th>Id</th>
                       <th>Name</th>
-                      <th>Account No</th>
+                      <th>Destination Account</th>
                       <th>Date</th>
                       <th>Amount</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>John</td>
-                      <td>432321312</td>
-                      <td>2022-07-05</td>
-                      <td>-100</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>John</td>
-                      <td>432321312</td>
-                      <td>2022-07-05</td>
-                      <td>-200</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>John</td>
-                      <td>432321312</td>
-                      <td>2022-07-05</td>
-                      <td>-500</td>
-                    </tr>
+                    <?php
+                    include('db.php');
+                    $id = $_SESSION['id'];
+                    if ($rol == 0) {
+                      $sql = "SELECT * FROM transacciones where $id = id_usuario;";
+                    };
+
+                    $query = mysqli_query($conexion, $sql);
+                    while ($row = mysqli_fetch_array($query)) {
+                      $rowcount = mysqli_num_rows($query);
+                    ?>
+                     
+                      <tr>
+                        <td><?php echo $row['id'] ?></td>
+                        <td><?php echo $row['nombre'] ?></td>
+                        <td><?php echo $row['cuenta_destino'] ?></td>
+                        <td><?php echo $row['fecha'] ?></td>
+                        <td><?php echo $row['monto'] ?></td>
+                      </tr>
+                      <?php
+                    }
+                      ?>
                   </tbody>
                 </table>
               </div>
