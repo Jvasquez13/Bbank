@@ -150,7 +150,7 @@ if (!isset($_SESSION['usuario'])) {
               </td>
               
             </table>
-            <button class='pay-btn' onclick="return confirmAmout()">Transfer</button>
+            <button class='pay-btn'>Transfer</button>
           </form>
         </div>
 
