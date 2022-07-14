@@ -116,7 +116,6 @@ die();
           
           <?php 
             if($rol == 0) :?>
-          <a href="../transfers/transfer.php"><button>New Transfer</button></a>
           <?php endif; ?>
         </div>
       </div>
